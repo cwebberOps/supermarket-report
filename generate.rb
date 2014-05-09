@@ -12,8 +12,8 @@ week_ago = Date.today - 7
 puts "Tasks Completed This Week"
 github.pull_requests('opscode/supermarket', :state => 'closed').each do |pr|
 
-  if pr[:merged_at].to_date > week_ago
-    puts "* #{pr[:title]} - (#{pr[:html_url]})"
+  if pr[:merged_at] && pr[:merged_at].to_date > week_ago
+    puts "#{pr[:title]} - (#{pr[:html_url]})"
   end
 end
 
